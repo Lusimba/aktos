@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-s6%85os9^jwd1jooym=k_)h6*f+p*nw=h6l)b8hmq8qcjp8_oe
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'https://aktos.ycode.dev/',
+    'aktos.ycode.dev',
     'aktos.localhost'
     ]
 
