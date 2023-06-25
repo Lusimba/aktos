@@ -1,0 +1,47 @@
+{
+    {$CADDY}
+}
+
+import common_config
+
+ktos.ycode.dev {
+  @excludeDirs {
+    not path /media/* /static/* /assets/*
+  }
+  bind {$ADDRESS}
+  reverse_proxy @excludeDirs app:8000 {
+   header_down Access-Control-Allow-Origin "*"
+   header_down -Server
+   header_down Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT, PATCH"
+  }
+  file_server
+  root * /app
+}
+
+aktos.ycode.dev {
+    @excludeDirs {
+        not path /media/* /static/* /assets/*
+    }
+    bind {$ADDRESS}
+    reverse_proxy @excludeDirs app:8000 {
+    header_down Access-Control-Allow-Origin "*"
+    header_down -Server
+    header_down Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT, PATCH"
+    }
+    file_server
+    root * /app
+}
+
+aktos.localhost {
+    @excludeDirs {
+    not path /media/* /static/* /assets/*
+  }
+  bind {$ADDRESS}
+  reverse_proxy @excludeDirs app:8000 {
+   header_down Access-Control-Allow-Origin "*"
+   header_down -Server
+   header_down Access-Control-Allow-Methods "POST, GET, OPTIONS, DELETE, PUT, PATCH"
+  }
+  file_server
+  root * /app
+}

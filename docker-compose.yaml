@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  caddy:
+    image: caddy:latest
+    container_name: aktos_proxy
+    depends_on:
+      - "app"
+    restart: unless-stopped
+    environment:
+      ACME_AGREE: "true"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - media:/app/media
+      - staticfiles:/app/static
+      - ./assets:/app/assets
+
+  db:
+    image: postgres
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=aktos
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+
+  app:
+    build: .
+    restart: unless-stopped
+    container_name: app
+    depends_on:
+      - "db"
+    environment:
+      DATABASE_HOST: db
+      DATABASE_NAME: aktos
+      DATABASE_USER: user
+      DATABASE_PASS: password
+      DEBUG: "False"
+
+    volumes:
+      - .:/app
+      - staticfiles:/app/staticfiles
+      - media:/app/media
+    expose:
+      - 8000
+    command: bash -c "python manage.py makemigrations --noinput && python manage.py migrate && python manage.py collectstatic --no-input && gunicorn --workers=3 aktos.wsgi -b 0.0.0.0:8000"
+
+volumes:
+  caddy_data:
+  media:
+  staticfiles:
+  db:
