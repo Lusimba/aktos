@@ -1,14 +1,14 @@
-make build:
+build:
 	docker compose down
 	docker compose build --no-cache app
 	docker compose up -d
 
-make up:
+up:
 	docker compose up -d
 
-make down:
+down:
 	docker compose down
 
-make test:
+test:
 	docker exec -it aktos_app python manage.py test
 
