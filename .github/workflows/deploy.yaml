@@ -19,7 +19,7 @@ jobs:
       - name: COPY FILES TO SERVER
         uses: appleboy/scp-action@master
         with:
-          host: 167.71.32.138
+          host: 13.49.115.255
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           port: 22
@@ -29,7 +29,7 @@ jobs:
       - name: BUILD APP AND RUN IN SERVER
         uses: appleboy/ssh-action@master
         with:
-          host: 167.71.32.138
+          host: 13.49.115.255
           username: ubuntu
           key: ${{ secrets.SSH_KEY }}
           port: 22
