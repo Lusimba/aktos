@@ -3,6 +3,12 @@ build:
 	docker compose build --no-cache app
 	docker compose up -d
 
+build-prod:
+	mv Caddyfile_prod Caddyfile
+	docker compose down
+	docker compose build --no-cache app
+	docker compose up -d
+
 up:
 	docker compose up -d
 
