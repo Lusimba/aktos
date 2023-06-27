@@ -1,6 +1,6 @@
 aktos.ycode.dev {
     @excludeDirs {
-        not path /media/* /static/* /assets/*
+        not path /media/* /static/*
     }
     bind {$ADDRESS}
     reverse_proxy @excludeDirs app:8000 {

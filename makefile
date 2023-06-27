@@ -16,5 +16,7 @@ down:
 	docker compose down
 
 test:
-	docker exec -it aktos_app python manage.py test
+	docker exec -it app python manage.py test --verbosity=2
 
+load-data:
+	docker exec -it app python manage.py loaddata data/consumers.csv

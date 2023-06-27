@@ -17,10 +17,9 @@ services:
       - caddy_data:/data
       - media:/app/media
       - staticfiles:/app/static
-      - ./assets:/app/assets
 
   db:
-    image: postgres
+    image: postgis/postgis:13-3.3
     container_name: postgres
     environment:
       - POSTGRES_USER=user
