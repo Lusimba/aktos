@@ -1,14 +1,12 @@
-# aktos
+# aktos (Provisional readme - incomplete)
 
 Aktos assignment project.
 
-ssh and install --sudo apt-get install -y build-essential as part of docker setup
+# Steps to run
 
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh get-docker.sh
-
-sudo usermod -aG docker ubuntu
-
-add these as env var - POSTGRES_USER=user - POSTGRES_PASSWORD=password - POSTGRES_DB=aktos
-
-implement --wait for database, before starting the app.
+1. unzip cd into the aktos folder
+2. Rename the Caddyfile_local to `Caddyfile`
+3. Run `$ make build` to build the project
+4. Run `$ make load-data` to load data from the csv file
+5. Go to `http://aktos.localhost/consumers` to view the browsable API
+6. Run `$ make test` to run the tests

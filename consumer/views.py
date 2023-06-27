@@ -1,10 +1,6 @@
 from rest_framework import generics
-from django.http import HttpResponseForbidden
 from consumer.models import Consumer
 from consumer.serializers import ConsumerSerializer
-
-def rate_limit_response(request, exception):
-    return HttpResponseForbidden("Rate limit exceeded. Please try again later.")
 
 class ConsumerListAPIView(generics.ListAPIView):
     serializer_class = ConsumerSerializer
