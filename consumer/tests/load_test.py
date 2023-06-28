@@ -14,8 +14,9 @@ load_test_data = [
         "previous_jobs_count": 1,
         "amount_due": 1001,
         "location": (33.45330369, -112.2324871),
-    }
+    },
 ]
+
 
 def get_data():
     return load_test_data

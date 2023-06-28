@@ -160,3 +160,5 @@ cython_debug/
 #.idea/
 
 Caddyfile
+.vscode/
+.DS_Store

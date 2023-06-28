@@ -318,8 +318,9 @@ sample_data = [
         "previous_jobs_count": 1,
         "amount_due": 1008,
         "location": (33.39278202, -111.9098746),
-    }
+    },
 ]
+
 
 def get_data():
     return sample_data
